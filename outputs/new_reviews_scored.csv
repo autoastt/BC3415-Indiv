@@ -1,0 +1,7 @@
+review_id,product,review_text,sentiment,confidence,aspects,risk_flags
+1,Wireless earbuds,Sound quality is amazing for the price and the battery lasts all day.,positive,0.952,"{'Quality / durability': 'positive', 'Price / value': 'positive', 'Battery / power': 'positive'}",[]
+2,Yoga mat,Smells terrible and started tearing at the edges within a week. Not worth it.,negative,0.97,{'Price / value': 'negative'},[]
+3,Coffee maker,Makes decent coffee. Setup instructions were confusing though.,positive,0.53,{'Ease of use / setup': 'neutral'},[]
+4,Kids' t-shirt,"Size runs small, had to return it. Customer service was quick to refund me.",negative,0.819,"{'Size / fit': 'negative', 'Customer service / returns': 'negative'}",[]
+5,Phone case,"Looks like a cheap knock off, not the genuine brand advertised.",negative,0.858,"{'Price / value': 'negative', 'Appearance / design': 'negative'}",['fraud / counterfeit']
+6,Desk lamp,"Nice lamp, bright light, arrived on time. Would buy again.",positive,0.985,{'Delivery / shipping': 'positive'},[]

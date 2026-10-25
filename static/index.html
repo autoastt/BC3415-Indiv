@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Review Insight</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="22" height="22"><path d="M4 5h16v10H9l-5 4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M8 10h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </div>
+      <div>
+        <h1>Review Insight</h1>
+        <p class="sub">Sentiment &amp; pain-point analysis for retail product reviews</p>
+      </div>
+    </div>
+    <div class="model-switch" role="radiogroup" aria-label="Model">
+      <span class="switch-label">Model</span>
+      <button role="radio" aria-checked="true" data-model="bert" class="seg active">DistilBERT <small>fine-tuned</small></button>
+      <button role="radio" aria-checked="false" data-model="logreg" class="seg">TF-IDF + LogReg <small>fast</small></button>
+    </div>
+  </header>
+
+  <nav class="tabs" role="tablist">
+    <button role="tab" class="tab active" data-tab="single">Analyze a review</button>
+    <button role="tab" class="tab" data-tab="batch">Batch analysis (CSV)</button>
+  </nav>
+
+  <main>
+    <!-- ================= Single review ================= -->
+    <section id="tab-single" class="tab-panel">
+      <div class="grid-2">
+        <div class="card">
+          <label for="review" class="card-title">Customer review</label>
+          <textarea id="review" rows="7" placeholder="Paste or type a product review…">Love the colour and it fits perfectly, but delivery took three weeks and the box arrived crushed.</textarea>
+          <div class="examples">
+            <span class="muted">Try:</span>
+          </div>
+          <div class="actions">
+            <span class="muted hint">Ctrl / ⌘ + Enter</span>
+            <button id="analyze-btn" class="primary">Analyze</button>
+          </div>
+        </div>
+
+        <div class="card" id="single-result">
+          <div class="empty">Results will appear here.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= Batch ================= -->
+    <section id="tab-batch" class="tab-panel" hidden>
+      <div class="card upload-card">
+        <div id="dropzone" class="dropzone" tabindex="0">
+          <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="M12 16V4m0 0l-5 5m5-5l5 5M4 20h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div><strong>Drop a CSV of reviews here</strong> or click to choose a file</div>
+          <div class="muted">The review-text column is detected automatically (max 2,000 rows).</div>
+          <input id="file-input" type="file" accept=".csv" hidden>
+        </div>
+        <div class="upload-side">
+          <button id="sample-btn" class="secondary">Use 300 sample Amazon reviews</button>
+          <label class="col-select" hidden>Text column
+            <select id="text-col"></select>
+          </label>
+        </div>
+      </div>
+      <div id="batch-result"></div>
+    </section>
+  </main>
+
+  <div id="tooltip" role="tooltip" hidden></div>
+  <script src="/static/app.js"></script>
+</body>
+</html>

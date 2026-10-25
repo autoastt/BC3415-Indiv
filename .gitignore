@@ -1,0 +1,6 @@
+.venv/
+.DS_Store
+__pycache__/
+models/
+Text_Classification_Assignment.docx
+video_script.md
